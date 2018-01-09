@@ -1,8 +1,10 @@
 package renderEngine;
 
+import de.matthiasmann.twl.utils.PNGDecoder;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL14;
 import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryStack;
@@ -30,6 +32,7 @@ import java.util.List;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL13.GL_CLAMP_TO_BORDER;
+import static org.lwjgl.opengl.GL13.GL_TEXTURE0;
 import static org.lwjgl.opengl.GL30.glGenerateMipmap;
 import static org.lwjgl.stb.STBImage.*;
 import static org.lwjgl.system.MemoryStack.stackPush;
@@ -70,62 +73,80 @@ public class Loader {
     public int loadTexture(String fileName){
 
 
-        int textureID = -1;
+
         //Acceptable Types: JPEG, PNG, TGA, BMP, PSD, GIF, HDR, PIC and PNM
         String filePath= Config.resourceDir+"/"+fileName;
-        textureID = Texture.loadTexture(filePath).getId();
-        textures.add(textureID);
         //Absolute FileName
-        /*try ( MemoryStack stack = stackPush() ) {
-            File file = new File(filePath);
-            if(!file.exists()) throw new IOException();
+        ByteBuffer buf = null;
+        int tWidth = 0;
+        int tHeight = 0;
 
-            IntBuffer w = stack.mallocInt(1);
-            IntBuffer h = stack.mallocInt(1);
-            IntBuffer comp = stack.mallocInt(1);
-            stbi_set_flip_vertically_on_load(true); //Origin = Bottom Left
+        try {
+            // Open the PNG file as an InputStream
+            InputStream in = new FileInputStream(filePath);
+            // Link the PNG decoder to this stream
+            PNGDecoder decoder = new PNGDecoder(in);
 
-            //ByteBuffer buffer = stbi_load(filePath, w, h, comp, 4);
-            ByteBuffer imageBuffer = ioResourceToByteBuffer(filePath, 4*256);
-            // Use info to read image metadata without decoding the entire image.
-            // We don't need this for this demo, just testing the API.
-            ByteBuffer image = stbi_load(imageBuffer, w, h, comp,4);
-            if(image == null) {
-                throw new RuntimeException("Failed to read image information: " + stbi_failure_reason());
-            }
-
-            int width = w.get();
-            int height = h.get();
-
-            //See Tutorial: https://github.com/SilverTiger/lwjgl3-tutorial/wiki/Texture
-            textureID = GL11.glGenTextures();
-            textures.add(textureID);
-            //Store Image on GPU
-            GL11.glBindTexture(GL_TEXTURE_2D,textureID);
+            // Get the width and height of the texture
+            tWidth = decoder.getWidth();
+            tHeight = decoder.getHeight();
 
 
-            GL11.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-            GL11.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-
-            //Filter Types = Nearest / Linear
-            GL11.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-            GL11.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
-            //glGenerateMipmap(GL_TEXTURE_2D);
-
-           // buffer.clear();
-            System.out.println("W:"+ width);
-            System.out.println("H:"+height);
-            GL11.glBindTexture(GL_TEXTURE_2D,0); //Unbind the Texture
-
-        } // the stack frame is popped automatically
-        catch (IOException e) {
+            // Decode the PNG file in a ByteBuffer
+            buf = ByteBuffer.allocateDirect(
+                    4 * decoder.getWidth() * decoder.getHeight());
+            decoder.decode(buf, decoder.getWidth() * 4, PNGDecoder.Format.RGBA);
+            buf.flip();
+            in.close();
+        } catch (IOException e) {
             e.printStackTrace();
+            System.exit(-1);
         }
-*/
-        return textureID;
+
+        // Create a new texture object in memory and bind it
+        int texId = GL11.glGenTextures();
+        textures.add(texId);
+        GL13.glActiveTexture(GL_TEXTURE0);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, texId);
+
+        // All RGB bytes are aligned to each other and each component is 1 byte
+        GL11.glPixelStorei(GL11.GL_UNPACK_ALIGNMENT, 1);
+
+        // Upload the texture data and generate mip maps (for scaling)
+        GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGB, tWidth, tHeight, 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, buf);
+
+        GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
+        GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
+
+        // Setup the ST coordinate system
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_REPEAT);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_REPEAT);
+
+        // Setup what to do when the texture has to be scaled
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER,
+                GL11.GL_NEAREST);
+        GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER,
+                GL11.GL_LINEAR_MIPMAP_LINEAR);
+
+        this.exitOnGLError("loadPNGTexture");
+
+        return texId;
     }
+
+    private void exitOnGLError(String errorMessage) {
+        int errorValue = GL11.glGetError();
+
+        if (errorValue != GL11.GL_NO_ERROR) {
+            //String errorString = GLU.gluErrorString(errorValue);
+            String errorString = ""+errorValue;
+            System.err.println("ERROR - " + errorMessage + ": " + errorString);
+
+            //if (Display.isCreated()) Display.destroy();
+            DisplayManager.closeDisplay();
+            System.exit(-1);
+        }
+    }
+
 
 
 

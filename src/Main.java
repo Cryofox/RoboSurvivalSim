@@ -25,24 +25,24 @@ public class Main {
         DefaultTexturedShader defaultTexturedShader = new DefaultTexturedShader();
         //Hardcoded Model
         float[] vertices = {
-                -0.5f, -0.5f, 0f, //V0
-                0.5f, -0.5f, 0f, //V1
-                -0.5f, 0.5f, 0f, //V2
+                -0.5f, 0.5f, 0f, //V0
+                -0.5f, -0.5f, 0f, //V1
+                0.5f, -0.5f, 0f, //V2
                 0.5f, 0.5f, 0f, //V3
         };
-        int[] indices={
-                0,1,2,
-                2,1,3
+        int[] indices = {
+                0, 1, 2,
+                2, 3, 0
         };
         float[] textureCoords={
-                0,0, //V1
-                1,0,  //V2
-                1,1, //V3
-                0,1, //V0
+                0,0, //V0
+                0,1,  //V1
+                1,1, //V2
+                1,0, //V3
         };
 
         RawModel model = loader.loadToVAO(vertices,textureCoords, indices);
-        ModelTexture texture = new ModelTexture(loader.loadTexture("anime.jpg"));
+        ModelTexture texture = new ModelTexture(loader.loadTexture("uvgrid01.png"));
         TexturedModel texturedModel = new TexturedModel(model,texture);
 
         while(!DisplayManager.isCloseRequested())

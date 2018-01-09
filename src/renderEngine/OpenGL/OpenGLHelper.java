@@ -59,7 +59,7 @@ public class OpenGLHelper {
 
     public final static void glVertexAttribPointer(int attributeNumber, int size, DataType dataType, boolean isNormalized, int stride, int offset)
     {
-        GL20.glVertexAttribPointer(attributeNumber,3, dataType.getValue(),false,0,0);
+        GL20.glVertexAttribPointer(attributeNumber,size, dataType.getValue(),false,0,0);
     }
     public final static void glDeleteTextures(int textureID)
     {
