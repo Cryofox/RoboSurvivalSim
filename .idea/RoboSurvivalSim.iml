@@ -7,8 +7,8 @@
       <sourceFolder url="file://$MODULE_DIR$/lib/native/windows/lwjgl3-Windows" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/lib/jars/slickUtil" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/lib/jars/lwjgl3" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/Test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/lib" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/ThirdParty" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -16,5 +16,17 @@
     <orderEntry type="library" exported="" name="lwjgl3-Windows" level="project" />
     <orderEntry type="library" exported="" name="lwjgl3" level="project" />
     <orderEntry type="library" exported="" name="slickUtil" level="project" />
+    <orderEntry type="library" exported="" name="javadocs" level="project" />
+    <orderEntry type="module-library" exported="" scope="TEST">
+      <library name="JUnit5">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jars/junit/junit-jupiter-api-5.0.0-M3.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/jars/junit/opentest4j-1.0.0-M1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" exported="" name="junit" level="project" />
   </component>
 </module>
