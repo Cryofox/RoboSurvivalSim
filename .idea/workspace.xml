@@ -4,8 +4,7 @@
     <list default="true" id="7f8f0c08-aca5-4a40-ab75-7fbe26db679d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/.idea/workspace.xml" afterPath="$PROJECT_DIR$/Test/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/renderEngine/DisplayManager.java" afterPath="$PROJECT_DIR$/src/renderEngine/DisplayManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/ColorTest.java" afterPath="$PROJECT_DIR$/tests/ColorTest.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -50,11 +49,11 @@
       <file leaf-file-name="ColorTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/ColorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="35" column="39" lean-forward="true" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
+            <state relative-caret-position="127">
+              <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1515479346915" expanded="false" signature="245:521" ph="{...}" />
+                <element signature="method#presetColor#0;class#ColorTest#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -278,6 +277,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -579,7 +579,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="Test and Build" type="Application" factoryName="Application">
+    <configuration default="false" name="Test and Build" type="Application" factoryName="Application" singleton="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <option name="VM_PARAMETERS" value="" />
@@ -650,24 +650,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GameTests - 2018.01.08 at 22h 11m 44s.xml">
-      <configuration name="GameTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GameTests - 2018.01.08 at 22h 14m 20s.xml">
-      <configuration name="GameTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GameTests - 2018.01.08 at 22h 15m 37s.xml">
-      <configuration name="GameTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GameTests - 2018.01.08 at 22h 17m 36s.xml">
-      <configuration name="GameTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GameTests - 2018.01.08 at 22h 26m 45s.xml">
-      <configuration name="GameTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GameTests - 2018.01.08 at 22h 27m 41s.xml">
-      <configuration name="GameTests" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GameTests - 2018.01.08 at 22h 28m 16s.xml">
       <configuration name="GameTests" configurationId="JUnit" />
     </history-entry>
@@ -677,8 +659,26 @@
     <history-entry file="GameTests - 2018.01.08 at 22h 29m 10s.xml">
       <configuration name="GameTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="engineTester_DummyTest - 2018.01.08 at 21h 37m 52s.xml">
-      <configuration name="engineTester.DummyTest" configurationId="JUnit" />
+    <history-entry file="GameTests - 2018.01.08 at 22h 32m 30s.xml">
+      <configuration name="GameTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GameTests - 2018.01.08 at 22h 32m 39s.xml">
+      <configuration name="GameTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GameTests - 2018.01.08 at 22h 32m 50s.xml">
+      <configuration name="GameTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GameTests - 2018.01.08 at 22h 33m 58s.xml">
+      <configuration name="GameTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GameTests - 2018.01.08 at 22h 34m 31s.xml">
+      <configuration name="GameTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GameTests - 2018.01.08 at 22h 35m 55s.xml">
+      <configuration name="GameTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GameTests - 2018.01.08 at 22h 36m 04s.xml">
+      <configuration name="GameTests" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -694,7 +694,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -706,7 +706,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -811,11 +811,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/ColorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="35" column="39" lean-forward="true" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
+        <state relative-caret-position="127">
+          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1515479346915" expanded="false" signature="245:521" ph="{...}" />
+            <element signature="method#presetColor#0;class#ColorTest#0" expanded="false" />
           </folding>
         </state>
       </provider>

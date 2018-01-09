@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import renderEngine.Color;
 
@@ -6,8 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Created by Ryder Stancescu on 1/8/2018.
  */
+@DisplayName("Color Tests")
 public class ColorTest {
     @Test
+    @DisplayName("Preset Color Ebony Clay (Blue)")
     public void presetColor()
     {
         //EbonyClay = 34,49,63
@@ -22,6 +25,7 @@ public class ColorTest {
     }
 
     @Test
+    @DisplayName("Convert from 0:255 -> 0:1")
     public void conversionFrom255()
     {
         //EbonyClay = 34,49,63
@@ -39,6 +43,7 @@ public class ColorTest {
     }
 
     @Test
+    @DisplayName("0:1")
     public void fromRaw()
     {
         //EbonyClay = 34,49,63
