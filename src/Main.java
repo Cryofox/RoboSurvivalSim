@@ -9,13 +9,11 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("LWJGL Version " + Version.getVersion() + " is working.");
-        DisplayManager.createDisplay();
 
+        DisplayManager.createDisplay();
         while(!DisplayManager.isCloseRequested())
         {
             DisplayManager.updateDisplay();
-
-
         }
 
 
