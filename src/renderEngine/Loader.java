@@ -35,7 +35,7 @@ public class Loader {
         GL30.glBindVertexArray(vaoID);
         return vaoID;
     }
-    public void purge(){
+    public void dispose(){
         for(int vao:vaos){
             GL30.glDeleteVertexArrays(vao);
         }

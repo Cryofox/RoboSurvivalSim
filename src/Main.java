@@ -7,6 +7,7 @@ import renderEngine.DisplayManager;
 import renderEngine.Loader;
 import renderEngine.RawModel;
 import renderEngine.Renderer;
+import renderEngine.Shaders.DefaultShader;
 
 public class Main {
 
@@ -16,6 +17,8 @@ public class Main {
         DisplayManager.createDisplay();
         Loader loader = new Loader();
         Renderer renderer = new Renderer();
+        DefaultShader defaultShader = new DefaultShader();
+
         //Hardcoded Model
         float[] vertices = {
                 -0.5f, 0.5f, 0f, //V0
@@ -33,14 +36,16 @@ public class Main {
         {
             DisplayManager.pollInput();
             DisplayManager.clearDisplay();
-
+            defaultShader.start();
             //Render everything In OpenGL
             renderer.render(model);
+            defaultShader.stop();
             //Poll Events, Clear Screen and Blit to Window
             DisplayManager.updateDisplay(); //Clears screen and swaps buffers
         }
+        defaultShader.dispose();
 
-        loader.purge();
+        loader.dispose();
         DisplayManager.closeDisplay();
     }
 }
