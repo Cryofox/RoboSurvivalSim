@@ -17,3 +17,8 @@ Winding Order =Counter Clockwise
 OpenGL is a STATE Machine!
 
 Bind =0 "unbinds" because it is simply changing to an unused State! : )
+
+
+
+
+Run gource in repo for fun visualizer :)
