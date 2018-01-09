@@ -1,4 +1,4 @@
-package renderEngine;
+package renderEngine.Models;
 
 /**
  * Created by Ryder Stancescu on 1/8/2018.

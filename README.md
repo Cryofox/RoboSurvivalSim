@@ -12,3 +12,8 @@ Vertex Buffer Objects (VBOs): Data, essentially a list of numbers. Can mean lite
 
 
 Winding Order =Counter Clockwise
+
+
+OpenGL is a STATE Machine!
+
+Bind =0 "unbinds" because it is simply changing to an unused State! : )

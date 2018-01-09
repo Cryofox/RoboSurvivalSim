@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/lib/jars/lwjgl3" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/lib" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/ThirdParty" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -16,7 +17,6 @@
     <orderEntry type="library" name="javadocs" level="project" />
     <orderEntry type="library" exported="" name="lwjgl3-Windows" level="project" />
     <orderEntry type="library" exported="" name="lwjgl3" level="project" />
-    <orderEntry type="library" exported="" name="slickUtil" level="project" />
     <orderEntry type="module-library" exported="" scope="TEST">
       <library name="JUnit5">
         <CLASSES>
@@ -28,5 +28,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" exported="" name="junit" level="project" />
+    <orderEntry type="library" exported="" name="pngDecoder" level="project" />
   </component>
 </module>
