@@ -13,10 +13,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="javadocs" level="project" />
     <orderEntry type="library" exported="" name="lwjgl3-Windows" level="project" />
     <orderEntry type="library" exported="" name="lwjgl3" level="project" />
     <orderEntry type="library" exported="" name="slickUtil" level="project" />
-    <orderEntry type="library" exported="" name="javadocs" level="project" />
     <orderEntry type="module-library" exported="" scope="TEST">
       <library name="JUnit5">
         <CLASSES>

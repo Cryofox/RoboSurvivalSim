@@ -103,13 +103,17 @@ public class DisplayManager {
         GLFW.glfwShowWindow(window);
     }
 
-
-
-    public static void updateDisplay()
+    public static void pollInput()
     {
         GLFW.glfwPollEvents();
+    }
 
+    public static void clearDisplay()
+    {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+    }
+    public static void updateDisplay()
+    {
         GLFW.glfwSwapBuffers(window);
     }
 
