@@ -25,8 +25,9 @@ import static org.lwjgl.system.MemoryStack.*;
  */
 public class DisplayManager {
 
-    private static final int WINDOW_WIDTH = 1280; //Pixels
-    private static final int WINDOW_HEIGHT = 720; //Pixels
+    private static int WINDOW_WIDTH = 1280; //Pixels
+    private static int WINDOW_HEIGHT = 720; //Pixels
+    private static GLFWWindowSizeCallback windowSizeCallback;
     private static final int FPS_CAP = 120;
     private static long window ;
     private  static  void createWindow()
@@ -38,7 +39,7 @@ public class DisplayManager {
         if ( !glfwInit() )
             throw new IllegalStateException("Unable to initialize GLFW");
 
-        GLFW.glfwWindowHint( GLFW.GLFW_RESIZABLE,  GL_TRUE);
+        GLFW.glfwWindowHint( GLFW.GLFW_RESIZABLE,  GL_FALSE);
         GLFW.glfwWindowHint( GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
         GLFW.glfwWindowHint( GLFW.GLFW_CONTEXT_VERSION_MINOR, 3);
         GLFW.glfwWindowHint( GLFW.GLFW_OPENGL_PROFILE,  GLFW.GLFW_OPENGL_CORE_PROFILE);
@@ -52,6 +53,8 @@ public class DisplayManager {
 
         setupKeyCallbacks();
         centerWindow();
+
+
         GLFW.glfwMakeContextCurrent(window); //Assign Window Context
         GLFW.glfwShowWindow(window);
         // This line is critical for LWJGL's interoperation with GLFW's
@@ -64,6 +67,9 @@ public class DisplayManager {
 
         glClearColor(clearColor.getR(),clearColor.getG(),clearColor.getB(), 0.0f);
     }
+
+
+
     private static void centerWindow()
     {
         // Get the thread stack and push a new frame

@@ -10,3 +10,5 @@ Vertex Array Objects (VAOs): Store Data about 3D model. 0->16 slots. Each slot =
 Vertex Buffer Objects (VBOs): Data, essentially a list of numbers. Can mean literally anything
 
 
+
+Winding Order =Counter Clockwise

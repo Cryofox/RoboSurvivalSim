@@ -7,6 +7,7 @@ import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
 
 import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +20,13 @@ public class Loader {
     private List<Integer> vbos = new ArrayList<Integer>();
 
 
-    public RawModel loadToVAO(float[] positions)
+    public RawModel loadToVAO(float[] positions, int[] indices)
     {
         int vaoID = createVAO();
-        storeDataInAttributeList(0,positions);
+        bindIndexBuffer(indices);
+        bindVertexBuffer(0,positions);
         unbindVAO();
-        return new RawModel(vaoID,positions.length/3); //1 Vertex = (x,y,z)
+        return new RawModel(vaoID,indices.length); //1 Vertex = (x,y,z)
     }
 
     private int createVAO(){
@@ -45,30 +47,50 @@ public class Loader {
         vbos.clear();
     }
 
-    private void storeDataInAttributeList(int attributeNumder, float[] data)
+    private void bindVertexBuffer(int attributeNumder, float[] data)
     {
         //Create and Set VBO
         int vboID = GL15.glGenBuffers();
         vbos.add(vboID);
 
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vboID); //Bind VBO
-        FloatBuffer buffer = storeDatainFloatBuffer(data); //Convert to Buffer
+        FloatBuffer buffer = convertToFloatBuffer(data); //Convert to Buffer
         GL15.glBufferData(GL15.GL_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW); //Store Buffer Data: GL Static Draw = Non-Editable once Stored in VBO
         GL20.glVertexAttribPointer(attributeNumder,3, GL11.GL_FLOAT,false,0,0);
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0); //Unbind VBO
     }
+
+    //Do not unbing IndexBuffer, each VAO has 1 slot dedicated for an index buffer, unbinding removes it from dedicated slot
+    private void bindIndexBuffer(int[] indices)
+    {
+        //Create and Set VBO
+        int vboID = GL15.glGenBuffers();
+        vbos.add(vboID);
+
+        GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, vboID); //Bind VBO
+        IntBuffer buffer = convertToIntBuffer(indices);
+        GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW); //Store Buffer Data: GL Static Draw = Non-Editable once Stored in VBO
+
+    }
+
     private void unbindVAO()
     {
         GL30.glBindVertexArray(0); //Unbind VAO by passing 0 as ID
     }
 
-    private FloatBuffer storeDatainFloatBuffer(float[] data)
+    private FloatBuffer convertToFloatBuffer(float[] data)
     {
         FloatBuffer buffer = BufferUtils.createFloatBuffer(data.length);
         buffer.put(data);
         buffer.flip(); //Finished writing, ready to read from
         return buffer;
     }
-
+    private IntBuffer convertToIntBuffer(int[] data)
+    {
+        IntBuffer buffer = BufferUtils.createIntBuffer(data.length);
+        buffer.put(data);
+        buffer.flip(); //Finished writing, ready to read from
+        return buffer;
+    }
 
 }
