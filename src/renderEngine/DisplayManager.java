@@ -41,8 +41,12 @@ public class DisplayManager {
 
         GLFW.glfwWindowHint( GLFW.GLFW_RESIZABLE,  GL_FALSE);
         GLFW.glfwWindowHint( GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
-        GLFW.glfwWindowHint( GLFW.GLFW_CONTEXT_VERSION_MINOR, 3);
-        GLFW.glfwWindowHint( GLFW.GLFW_OPENGL_PROFILE,  GLFW.GLFW_OPENGL_CORE_PROFILE);
+        GLFW.glfwWindowHint( GLFW.GLFW_CONTEXT_VERSION_MINOR, 2); //MacOS = 3.2
+
+        //MACOS Specific:
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
        // GLFW.glfwDefaultWindowHints();
         int fullscreen = 0; //False
         int sharedOpenGLContexts = 0;
@@ -56,7 +60,6 @@ public class DisplayManager {
 
 
         GLFW.glfwMakeContextCurrent(window); //Assign Window Context
-        GLFW.glfwShowWindow(window);
         // This line is critical for LWJGL's interoperation with GLFW's
         // OpenGL context, or any context that is managed externally.
         // LWJGL detects the context that is current in the current thread,
@@ -106,7 +109,8 @@ public class DisplayManager {
     public static void createDisplay()
     {
         createWindow();
-        GLFW.glfwShowWindow(window);
+//        if(Config.showWindow)
+//            GLFW.glfwShowWindow(window);
     }
 
     public static void pollInput()

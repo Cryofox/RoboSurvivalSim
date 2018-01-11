@@ -6,4 +6,7 @@ package renderEngine;
 public interface Config {
     public static final String rootPrefix = "../";
     public static final String resourceDir = rootPrefix+"resources";
+
+
+    public static  final boolean showWindow = false;
 }

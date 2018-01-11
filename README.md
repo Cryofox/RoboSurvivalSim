@@ -22,3 +22,10 @@ Bind =0 "unbinds" because it is simply changing to an unused State! : )
 
 
 Run gource in repo for fun visualizer :)
+
+
+
+
+IntelliJ Quality of life shortcuts:
+
+ctrl+alt+o = cleanup imports and remove .* generic imports

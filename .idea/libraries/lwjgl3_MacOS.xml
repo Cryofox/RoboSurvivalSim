@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lwjgl3-MacOS">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/native/macos/lwjgl3-MacOS" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/native/macos/lwjgl3-MacOS" recursive="false" />
+  </library>
+</component>

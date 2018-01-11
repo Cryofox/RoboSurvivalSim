@@ -5,8 +5,8 @@ package renderEngine.Shaders;
  */
 public class DefaultTexturedShader extends ShaderProgram {
 
-    private static final String VERTEX_FILE = "D:\\Projects\\KawaiiKaiju\\RoboSurvivalSim\\shaders\\DefaultTextured\\DefaultTextured.vert";
-    private static final String FRAGMENT_FILE = "D:\\Projects\\KawaiiKaiju\\RoboSurvivalSim\\shaders\\DefaultTextured\\DefaultTextured.frag";
+    private static final String VERTEX_FILE = "../shaders/DefaultTextured/DefaultTextured.vert";
+    private static final String FRAGMENT_FILE = "../shaders/DefaultTextured/DefaultTextured.frag";
 
     public DefaultTexturedShader()
     {

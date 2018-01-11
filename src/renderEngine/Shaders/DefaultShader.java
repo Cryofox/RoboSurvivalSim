@@ -5,8 +5,8 @@ package renderEngine.Shaders;
  */
 public class DefaultShader extends ShaderProgram {
 
-    private static final String VERTEX_FILE = "D:\\Projects\\KawaiiKaiju\\RoboSurvivalSim\\shaders\\Default\\Default.vert";
-    private static final String FRAGMENT_FILE = "D:\\Projects\\KawaiiKaiju\\RoboSurvivalSim\\shaders\\Default\\Default.frag";
+    private static final String VERTEX_FILE = "../shaders/Default/Default.vert";
+    private static final String FRAGMENT_FILE = "../shaders/Default/Default.frag";
 
     public DefaultShader()
     {
